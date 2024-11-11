@@ -14,7 +14,24 @@ export const passwordValidation = async (user, password) =>
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-export const generateUsers = () => {
+export const generatePets = (count) => {
+  const amount = Number(count);
+  const pets = [];
+  for (let i = 0; i < amount; i++) {
+    const pet = {
+      name: faker.person.firstName(),
+      specie: faker.helpers.arrayElement(["dog", "cat", "bird", "rabbit", "fish"]),
+      birthDate: faker.date.past(),
+      adopted: false,
+      owner: null,
+      image: "",
+    };
+    pets.push(pet);
+  }
+  return pets;
+};
+
+export const generateUsers = (count) => {
   const amount = Number(count);
   const users = [];
   for (let i = 0; i < amount; i++) {
