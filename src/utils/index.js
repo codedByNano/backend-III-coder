@@ -20,7 +20,13 @@ export const generatePets = (count) => {
   for (let i = 0; i < amount; i++) {
     const pet = {
       name: faker.person.firstName(),
-      specie: faker.helpers.arrayElement(["dog", "cat", "bird", "rabbit", "fish"]),
+      specie: faker.helpers.arrayElement([
+        "dog",
+        "cat",
+        "bird",
+        "rabbit",
+        "fish",
+      ]),
       birthDate: faker.date.past(),
       adopted: false,
       owner: null,

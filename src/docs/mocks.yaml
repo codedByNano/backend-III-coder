@@ -1,0 +1,148 @@
+paths:
+  /api/mocks:
+    get:
+      summary: Obtener todos los mocks
+      description: Retorna una lista de datos de prueba (mocks) generados para el sistema.
+      responses:
+        200:
+          description: Lista de mocks obtenida exitosamente.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: Identificador único del mock.
+                    name:
+                      type: string
+                      description: Nombre del mock.
+                    data:
+                      type: object
+                      description: Datos adicionales del mock.
+
+    post:
+      summary: Crear un nuevo mock
+      description: Genera un nuevo mock con los datos proporcionados.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Nombre del mock.
+                data:
+                  type: object
+                  description: Datos adicionales para el mock.
+      responses:
+        201:
+          description: Mock creado exitosamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identificador único del mock.
+                  name:
+                    type: string
+                    description: Nombre del mock.
+                  data:
+                    type: object
+                    description: Datos adicionales del mock.
+
+  /api/mocks/{id}:
+    get:
+      summary: Obtener un mock por ID
+      description: Retorna los detalles de un mock específico.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: ID del mock.
+      responses:
+        200:
+          description: Detalles del mock obtenidos exitosamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identificador único del mock.
+                  name:
+                    type: string
+                    description: Nombre del mock.
+                  data:
+                    type: object
+                    description: Datos adicionales del mock.
+        404:
+          description: Mock no encontrado.
+
+    put:
+      summary: Actualizar un mock por ID
+      description: Actualiza los datos de un mock existente.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: ID del mock.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Nuevo nombre del mock.
+                data:
+                  type: object
+                  description: Nuevos datos adicionales para el mock.
+      responses:
+        200:
+          description: Mock actualizado exitosamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identificador único del mock.
+                  name:
+                    type: string
+                    description: Nombre del mock actualizado.
+                  data:
+                    type: object
+                    description: Datos adicionales del mock actualizado.
+        404:
+          description: Mock no encontrado.
+
+    delete:
+      summary: Eliminar un mock por ID
+      description: Elimina un mock existente del sistema.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: ID del mock.
+      responses:
+        200:
+          description: Mock eliminado exitosamente.
+        404:
+          description: Mock no encontrado.
