@@ -1,0 +1,97 @@
+paths:
+  /api/sessions/register:
+    post:
+      summary: Registra un nuevo usuario
+      description: Crea un nuevo usuario en el sistema
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '201':
+          description: Usuario registrado exitosamente
+        '400':
+          description: Datos inválidos proporcionados
+        '500':
+          description: Error del servidor
+  /api/sessions/login:
+    post:
+      summary: Inicia sesión de un usuario
+      description: Autentica a un usuario y devuelve un token JWT
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Inicio de sesión exitoso
+        '400':
+          description: Datos inválidos proporcionados
+        '404':
+          description: Usuario no encontrado
+        '500':
+          description: Error del servidor
+  /api/sessions/current:
+    get:
+      summary: Obtiene la sesión actual del usuario
+      description: Devuelve los detalles del usuario actualmente autenticado
+      responses:
+        '200':
+          description: Detalles del usuario obtenidos exitosamente
+        '401':
+          description: No autenticado
+        '500':
+          description: Error del servidor
+  /api/sessions/unprotectedLogin:
+    post:
+      summary: Inicia sesión de un usuario sin protección
+      description: Autentica a un usuario y devuelve un token JWT sin protección
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Inicio de sesión exitoso
+        '400':
+          description: Datos inválidos proporcionados
+        '404':
+          description: Usuario no encontrado
+        '500':
+          description: Error del servidor
+  /api/sessions/unprotectedCurrent:
+    get:
+      summary: Obtiene la sesión actual del usuario sin protección
+      description: Devuelve los detalles del usuario actualmente autenticado sin protección
+      responses:
+        '200':
+          description: Detalles del usuario obtenidos exitosamente
+        '401':
+          description: No autenticado
+        '500':
+          description: Error del servidor
