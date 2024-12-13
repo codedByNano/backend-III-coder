@@ -45,10 +45,10 @@ npm run test
 ## Docker 🐳
 **Enlace:**
 ```plaintext
-   
+   https://hub.docker.com/repository/docker/martigancedo/adoptme-api/general
    ```
 
 
 ## Autor ✍️
 
-Creado por **Nano**, un desarrollador apasionado por el código y las mascotas. 🐾
+Creado por **Martiniano Gancedo** 2024
